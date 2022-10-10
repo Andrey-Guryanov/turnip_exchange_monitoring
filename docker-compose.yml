@@ -3,7 +3,7 @@ services:
     
     mongo:
         ports:
-            - '27017:27017'
+            - '27018:27017'
         container_name: container_mongo
         restart: always
         logging:
