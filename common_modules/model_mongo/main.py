@@ -14,7 +14,7 @@ class Mongo_db(object):
     def __init__(self, db_name):
         if MONGO_USER and MONGO_PASS:
             self.client = motor.motor_asyncio.AsyncIOMotorClient(
-                f'mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:27018')
+                f'mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:27017')
         else:
             self.client = motor.motor_asyncio.AsyncIOMotorClient(
                 f'mongodb://{MONGO_HOST}:27017')
