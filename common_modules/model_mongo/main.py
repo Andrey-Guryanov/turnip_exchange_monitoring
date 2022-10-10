@@ -14,7 +14,7 @@ class Mongo_db(object):
     def __init__(self, db_name):
         if MONGO_USER and MONGO_PASS:
             self.client = motor.motor_asyncio.AsyncIOMotorClient(
-                f'mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:27017')
+                f'mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:27018')
         else:
             self.client = motor.motor_asyncio.AsyncIOMotorClient(
                 f'mongodb://{MONGO_HOST}:27017')
@@ -58,7 +58,6 @@ class Mongo_db(object):
     async def _update_task_cost(self, chat_id, new_cost):
         self.coll = self.db['tasks']
         await self.coll.update_one({"chat_id": chat_id}, {"$set": {"min_turnip_cost": new_cost}})
-
 
     async def add_task_no_cost(self, chat_id, min_turnip_cost, message_id, language):
         task = await self._check_task_no_cost(chat_id)
@@ -105,12 +104,10 @@ class Mongo_db(object):
 
     async def task_completed(self, obj_id, result):
         self.coll = self.db['tasks']
-        await self.coll.update_one({"_id": obj_id}, {"$set": {"status": "completed", 'result': result }})
+        await self.coll.update_one({"_id": obj_id}, {"$set": {"status": "completed", 'result': result}})
         return True
 
     async def check_completed_task(self):
         self.coll = self.db['tasks']
         task = await self.coll.find_one_and_delete({'status': 'completed'})
         return task
-
-
