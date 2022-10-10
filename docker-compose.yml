@@ -1,0 +1,30 @@
+version: '3.3'
+services:
+    
+    mongo:
+        ports:
+            - '27017:27017'
+        container_name: container_mongo
+        restart: always
+        logging:
+            options:
+                max-size: 1g
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD=root_pass
+        image: mongo
+
+    telegram_bot:
+        build:
+            context: ./
+            dockerfile: telegram_bot.Dockerfile
+        container_name: telegram_bot
+        restart: always
+
+    island_parser:
+        build:
+            context: ./
+            dockerfile: island_parser.Dockerfile
+        container_name: island_parser
+        restart: always
+

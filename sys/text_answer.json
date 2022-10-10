@@ -1,0 +1,43 @@
+{
+  "START": {
+    "TEXT": "Hello! Choose language / Привет! Выбери язык ",
+    "ENG_BTN": "\uD83C\uDDEC\uD83C\uDDE7",
+    "RUS_BTN": "\uD83C\uDDF7\uD83C\uDDFA"
+  },
+  "ENG": {
+    "title_text": "The bot receives information from the https://turnip.exchange/. Available actions:",
+    "get_btn": "View current listings🔎",
+    "task_btn_txt": "Specify the minimum price💸",
+    "island_name": "Island",
+    "island_turnip_cost": "Turnip cost",
+    "island_rating": "Rating",
+    "island_queue": "Queue",
+    "add_task_no_cost": "I receive data. Wait...⚙",
+    "wait_task_no_cost": "The request is still in the queue. Wait 🧘‍",
+    "title_task_no_cost": "Available islands:",
+    "completed_task_no_cost": "\n\n🏝<b>{}</b>\n{}\n\nTurnip cost - {}💰\nQueue - {} of {}\nURL - {}\n",
+    "selection_cost": "Specify the minimum price for turnips (bells):",
+    "add_task_cost": "Request created - expected price - {} bells ⏱",
+    "update_task_cost": "Request updated - expected price - {} bells ⏱",
+    "completed_task_cost": "🏝<b>Found a suitable island {}:</b>\n\n{}\n\nTurnip cost - {}💰\nURL - {}",
+    "no_island": "There are no available islands now 😔"
+  },
+  "RUS": {
+    "title_text": "Бот получает информацию с https://turnip.exchange/ . Доступные действия:",
+    "get_btn": "Посмотреть текущие объявления🔎",
+    "task_btn_txt": "Задать минимальнаю цену💸",
+    "island_name": "Остров",
+    "island_turnip_cost": "Стоимость репы",
+    "island_rating": "Рейтинг",
+    "island_queue": "Очередь",
+    "add_task_no_cost": "Получаю данные. Ожидайте...⚙",
+    "wait_task_no_cost": "Запрос ещё в очереди. Ожидайте 🧘‍",
+    "title_task_no_cost": "Доступные острова:",
+    "completed_task_no_cost": "\n\n🏝<b>{}</b>\n{}\n\nСтоимость репы - {}💰\nОчередь - {} из {}\nURL - {}\n",
+    "selection_cost": "Укажите минимальнаю цену на репу (дини):",
+    "add_task_cost": "Запрос создан - ожидаемая цена - {} диней ⏱",
+    "update_task_cost": "Запрос обновлён - ожидаемая цена - {} диней ⏱",
+    "completed_task_cost": "🏝<b>Найден подходящий остров {}:</b>\n\n{}\n\nСтоимость репы - {}💰\nURL - {}\n",
+    "no_island": "Сейчас нет доступных островов 😔"
+  }
+}

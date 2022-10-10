@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Custom ignore
+test.png
+.idea/
+fake_useragent*.json
+geckodriver_*
