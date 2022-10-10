@@ -26,4 +26,4 @@ ____
     MONGO_PASS={пароль для MongoDB из п. 2}
     MONGO_HOST=container_mongo
     ```
-4. В директории с проектом выполнить "docker-compose up"
+4. В директории с проектом выполните "docker-compose up"
