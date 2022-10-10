@@ -2,7 +2,7 @@
 
 Telegram бот для мониторинга предложений о продаже репы на turnip.exchange
 
-<center><a href="https://github.com/Andrey-Guryanov/turnip_exchange_monitoring/raw/main/scheme.jpg" target="_blank"><img src="https://github.com/Andrey-Guryanov/turnip_exchange_monitoring/raw/main/scheme.jpg" width="350"/></a></center>
+<a align="center" href="https://github.com/Andrey-Guryanov/turnip_exchange_monitoring/raw/main/scheme.jpg"><img src="https://github.com/Andrey-Guryanov/turnip_exchange_monitoring/raw/main/scheme.jpg" width="350" tex/></a>
 
 Доступные функционалы:
 
