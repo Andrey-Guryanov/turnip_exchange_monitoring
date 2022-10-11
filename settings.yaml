@@ -1,2 +1,1 @@
 db_name: turnip_exchange
-web_driver_path: ./firefox_driver/geckodriver

@@ -1,18 +1,19 @@
 version: '3.3'
 services:
-    
     mongo:
         ports:
-            - '27018:27017'
-        container_name: container_mongo
+            - '${EXTERNAL_PORT}:27017'
+        container_name: ${MONGO_HOST}
         restart: always
         logging:
             options:
                 max-size: 1g
         environment:
-            - MONGO_INITDB_ROOT_USERNAME=root
-            - MONGO_INITDB_ROOT_PASSWORD=root_pass
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
         image: mongo
+        env_file:
+            - .env
 
     telegram_bot:
         build:

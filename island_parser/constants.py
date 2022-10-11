@@ -26,6 +26,6 @@ LOG_PATH = Path.cwd() / 'logs'
 
 SETTINGS = load_settings()
 
-DRIVER_PATH = SETTINGS['web_driver_path']
+DRIVER_PATH = './firefox_driver/geckodriver'
 
 mongo_db = Mongo_db(SETTINGS['db_name'])

@@ -14,16 +14,13 @@ ____
 
 ## Быстрый старт
 
-1. В директорию `./firefox_driver` поместите актуальную версию geckodriver для linux 64 (
-   см. https://github.com/mozilla/geckodriver/releases/). Должно получиться так: `./firefox_driver/geckodriver_linux_64`
-   ;
-2. Измените пароль для MongoDB в файле `docker-compose.yml`: MONGO_INITDB_ROOT_PASSWORD={новый пароль} ;
-3. В директории с проектом создайте файл `.env` (см. пример - файл `.env_example`) со следующим содержанием:
+1. В директории с проектом создайте файл `.env` (см. пример - файл `.env_example`) со следующим содержанием:
     ```
     TELEGRAM_TOKEN={telegram_token}
     
     MONGO_USER=root
-    MONGO_PASS={пароль для MongoDB из п. 2}
+    MONGO_PASS={пароль для MongoDB}
     MONGO_HOST=container_mongo
+    EXTERNAL_PORT=27017
     ```
-4. В директории с проектом выполните "docker-compose up"
+2. В директории с проектом выполните "docker-compose up"
