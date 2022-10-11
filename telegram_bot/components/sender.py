@@ -1,4 +1,5 @@
 from globals import bot, mongo_db, TEXT_ANSWER
+from aiogram import html
 
 
 async def _create_islands_text(islands: list, language: str) -> str:
@@ -13,8 +14,8 @@ async def _create_islands_text(islands: list, language: str) -> str:
             island['queue']['count_waiting'],
             island['queue']['length'], ]
         islands_text += TEXT_ANSWER[language]['completed_task_no_cost'].format(
-            island_name,
-            island_dsc,
+            html.quote(island_name),
+            html.quote(island_dsc),
             turnip_cost,
             island_queue[0],
             island_queue[1],
