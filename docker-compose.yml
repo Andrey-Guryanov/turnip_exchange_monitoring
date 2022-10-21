@@ -22,7 +22,7 @@ services:
         container_name: telegram_bot
         restart: always
         depends_on:
-            - ${MONGO_HOST}
+            - mongo
 
     island_parser:
         build:
@@ -31,5 +31,5 @@ services:
         container_name: island_parser
         restart: always
         depends_on:
-            - ${MONGO_HOST}
+            - mongo
 
