@@ -8,13 +8,16 @@ load_dotenv()
 MONGO_USER = os.getenv('MONGO_USER')
 MONGO_PASS = os.getenv('MONGO_PASS')
 MONGO_HOST = os.getenv('MONGO_HOST')
+MONGO_PORT = os.getenv('MONGO_PORT')
+if MONGO_PORT is None:
+    MONGO_PORT = 27017
 
 
 class Mongo_db(object):
     def __init__(self, db_name):
         if MONGO_USER and MONGO_PASS:
             self.client = motor.motor_asyncio.AsyncIOMotorClient(
-                f'mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:27017')
+                f'mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}')
         else:
             self.client = motor.motor_asyncio.AsyncIOMotorClient(
                 f'mongodb://{MONGO_HOST}:27017')

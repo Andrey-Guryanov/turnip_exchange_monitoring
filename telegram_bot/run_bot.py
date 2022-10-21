@@ -1,5 +1,6 @@
 import os
 import asyncio
+from time import sleep
 from dotenv import load_dotenv
 from aiogram import Router, Dispatcher
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
@@ -9,7 +10,7 @@ from components import (
     router_task_no_cost,
     router_task_cost,
     router_control_users, )
-from components.sender import send_messages_task
+from components.create_message_task import create_messages
 
 try:
     from common_modules.app_settings import load_settings
@@ -29,12 +30,13 @@ scheduler = AsyncIOScheduler()
 
 
 async def main() -> None:
+    sleep(60)
     dp.include_router(router_control_users.router)
     dp.include_router(router_task_no_cost.router)
     dp.include_router(router_task_cost.router)
     scheduler.start()
-    scheduler.add_job(send_messages_task, 'interval', seconds=10)
-    await dp.start_polling(bot)
+    scheduler.add_job(create_messages, 'interval', seconds=10)
+    await dp.start_polling(bot, skip_updates=True)
 
 
 if __name__ == "__main__":

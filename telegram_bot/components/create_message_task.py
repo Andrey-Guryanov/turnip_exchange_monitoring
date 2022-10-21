@@ -1,8 +1,6 @@
-from time import sleep
-from globals import mongo_db, TEXT_ANSWER, bot
 from aiogram import html
-from aiogram.exceptions import TelegramNetworkError
-
+from globals import mongo_db, TEXT_ANSWER, bot
+from sender_message import send_user_message
 
 async def _create_islands_text(islands: list, language: str) -> str:
     islands_text = ''
@@ -25,19 +23,7 @@ async def _create_islands_text(islands: list, language: str) -> str:
     return title + islands_text
 
 
-async def send_user_message(chat_id, text_message, parse_mode=None, reply_to_message_id=None):
-    try:
-        await bot.send_message(
-            chat_id,
-            text_message,
-            parse_mode=parse_mode,
-            reply_to_message_id=reply_to_message_id)
-    except TelegramNetworkError:
-        print('TelegramNetworkError')
-        sleep(1)
-        await send_user_message(chat_id, text_message, parse_mode, reply_to_message_id)
-
-async def send_messages_task() -> None:
+async def create_messages() -> None:
     while True:
         task = await mongo_db.check_completed_task()
         if task is None:
