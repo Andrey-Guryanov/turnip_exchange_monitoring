@@ -30,14 +30,13 @@ scheduler = AsyncIOScheduler()
 
 
 async def main() -> None:
-    sleep(30)
     dp.include_router(router_control_users.router)
     dp.include_router(router_task_no_cost.router)
     dp.include_router(router_task_cost.router)
     # scheduler.start()
     # scheduler.add_job(create_messages, 'interval', seconds=10)
-    loop = asyncio.get_event_loop()
-    loop.create_task(create_messages())
+    # loop = asyncio.get_event_loop()
+    # loop.create_task(create_messages())
     await dp.start_polling(bot, skip_updates=True)
 
 
