@@ -1,5 +1,7 @@
-from globals import mongo_db, TEXT_ANSWER
+from time import sleep
+from globals import mongo_db, TEXT_ANSWER, bot
 from aiogram import html
+from aiogram.exceptions import TelegramNetworkError
 
 
 async def _create_islands_text(islands: list, language: str) -> str:
@@ -23,7 +25,19 @@ async def _create_islands_text(islands: list, language: str) -> str:
     return title + islands_text
 
 
-async def send_messages_task(bot) -> None:
+async def send_user_message(chat_id, text_message, parse_mode=None, reply_to_message_id=None):
+    try:
+        await bot.send_message(
+            chat_id,
+            text_message,
+            parse_mode=parse_mode,
+            reply_to_message_id=reply_to_message_id)
+    except TelegramNetworkError:
+        print('TelegramNetworkError')
+        sleep(1)
+        await send_user_message(chat_id, text_message, parse_mode, reply_to_message_id)
+
+async def send_messages_task() -> None:
     while True:
         task = await mongo_db.check_completed_task()
         if task is None:
@@ -34,12 +48,13 @@ async def send_messages_task(bot) -> None:
             turnip_cost = task['result']['islands'][0]['turnip_cost']
             island_url = task['result']['islands'][0]['url']
             if island_name == 'No Islands':
-                await bot.send_message(
+                await send_user_message(
                     task['chat_id'],
                     TEXT_ANSWER[task['language']]['no_island'],
-                    reply_to_message_id=task['message_id'])
+                    parse_mode=None,
+                    eply_to_message_id=task['message_id'])
             elif task['min_turnip_cost'] > 0:
-                await bot.send_message(
+                await send_user_message(
                     task['chat_id'],
                     TEXT_ANSWER[task['language']]['completed_task_cost'].format(
                         island_name,
