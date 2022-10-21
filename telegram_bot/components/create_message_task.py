@@ -1,6 +1,8 @@
 from aiogram import html
 from globals import mongo_db, TEXT_ANSWER, bot
 from sender_message import send_user_message
+from asyncio import sleep
+
 
 async def _create_islands_text(islands: list, language: str) -> str:
     islands_text = ''
@@ -27,7 +29,7 @@ async def create_messages() -> None:
     while True:
         task = await mongo_db.check_completed_task()
         if task is None:
-            break
+            await sleep(10)
         else:
             island_name = task['result']['islands'][0]['name']
             island_dsc = task['result']['islands'][0]['description'].replace('\n\n', '\n').strip()
