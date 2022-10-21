@@ -21,6 +21,8 @@ services:
             dockerfile: telegram_bot.Dockerfile
         container_name: telegram_bot
         restart: always
+        depends_on:
+            - ${MONGO_HOST}
 
     island_parser:
         build:
@@ -28,4 +30,6 @@ services:
             dockerfile: island_parser.Dockerfile
         container_name: island_parser
         restart: always
+        depends_on:
+            - ${MONGO_HOST}
 
