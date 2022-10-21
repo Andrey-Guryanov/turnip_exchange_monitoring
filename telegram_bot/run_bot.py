@@ -33,7 +33,7 @@ async def main() -> None:
     dp.include_router(router_task_no_cost.router)
     dp.include_router(router_task_cost.router)
     scheduler.start()
-    scheduler.add_job(send_messages_task, 'interval', seconds=10)
+    scheduler.add_job(send_messages_task, 'interval', seconds=10, args=(bot,))
     await dp.start_polling(bot)
 
 

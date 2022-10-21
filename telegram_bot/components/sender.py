@@ -1,4 +1,4 @@
-from globals import bot, mongo_db, TEXT_ANSWER
+from globals import mongo_db, TEXT_ANSWER
 from aiogram import html
 
 
@@ -23,7 +23,7 @@ async def _create_islands_text(islands: list, language: str) -> str:
     return title + islands_text
 
 
-async def send_messages_task() -> None:
+async def send_messages_task(bot) -> None:
     while True:
         task = await mongo_db.check_completed_task()
         if task is None:
