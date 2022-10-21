@@ -35,9 +35,9 @@ async def main() -> None:
     dp.include_router(router_task_cost.router)
     # scheduler.start()
     # scheduler.add_job(create_messages, 'interval', seconds=10)
-    # loop = asyncio.get_event_loop()
-    # loop.create_task(create_messages())
-    await dp.start_polling(bot, skip_updates=True)
+    loop = asyncio.get_event_loop()
+    loop.create_task(create_messages())
+    await dp.start_polling(bot, skip_updates=True, polling_timeout=30)
 
 
 if __name__ == "__main__":
